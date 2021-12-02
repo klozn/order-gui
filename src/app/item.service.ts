@@ -23,8 +23,12 @@ export class ItemService {
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      console.error(error);
+      this.log(`${operation} : ${error}`);
       return of(result as T);
     }
+  }
+
+  private log(message: string): void {
+    console.log(`ItemService: ${message}`);
   }
 }
