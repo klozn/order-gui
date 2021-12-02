@@ -1,7 +1,17 @@
 <section>
-  <h3 class="section-title">Items</h3>
+  <div class="section-title">
+    <h3>Items</h3>
+    <div class="item-search">
+      <input id="name"
+             name="name"
+             placeholder="Filter by name..."
+             [(ngModel)]="searchTerm"/>
+      <a class="btn btn-create" routerLink="/createItem">Add new item</a>
+    </div>
+
+  </div>
   <ul class="card-list">
-    <li class="card" *ngFor="let item of items">
+    <li class="card" *ngFor="let item of items | itemNameFilter: searchTerm">
       <div class="card-title">{{item.name}}</div>
       <img class="card-image" src="{{itemImageSrc}}" alt="item image">
       <div class="card-footer">

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ItemService} from "../item.service";
 import {Item} from "../item";
+import {debounceTime, distinctUntilChanged, Observable, Subject, switchMap} from "rxjs";
 
 @Component({
   selector: 'app-item-overview',
@@ -14,6 +15,7 @@ export class ItemOverviewComponent implements OnInit {
   private greenWarningIconSrc = './assets/img/warning-icon-green.png';
   private yellowWarningIconSrc = './assets/img/warning-icon-yellow.png';
   private redWarningIconSrc = './assets/img/warning-icon-red.png';
+  searchTerm: string = '';
 
   constructor(private itemService: ItemService) { }
 
@@ -33,4 +35,5 @@ export class ItemOverviewComponent implements OnInit {
     }
     return this.redWarningIconSrc;
   }
+
 }

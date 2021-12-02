@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {environment} from "../environments/environment";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {environment} from "../../environments/environment";
 import {catchError, Observable, of} from "rxjs";
 import {Item} from "./item";
+import {CreateItem} from "./createItem";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItemService {
 
-  private itemUrl: string;
+  private readonly itemUrl: string;
+  httpOptions = {
+    headers: new HttpHeaders( { 'Content-Type': 'application/json' })
+  }
 
   constructor(private http: HttpClient) {
     this.itemUrl = `${environment.backendUrl}/items`;
@@ -30,5 +34,12 @@ export class ItemService {
 
   private log(message: string): void {
     console.log(`ItemService: ${message}`);
+  }
+
+  addItem(item: CreateItem): Observable<Item> {
+    return this.http.post<Item>(this.itemUrl, item, this.httpOptions)
+      .pipe(
+        catchError(this.handleError<Item>('addItem'))
+      );
   }
 }
