@@ -1,1 +1,16 @@
-<p>item-overview works!</p>
+<section>
+  <h3 class="section-title">Items</h3>
+  <ul class="card-list">
+    <li class="card" *ngFor="let item of items">
+      <div class="card-title">{{item.name}}</div>
+      <img class="card-image" src="{{itemImageSrc}}" alt="item image">
+      <div class="card-footer">
+        <div>Price: &euro; {{item.price}} </div>
+        <div class="stock">
+          <span>{{item.stockUrgency}}</span>
+          <img class="icon" [src]="getWarningIcon(item)" alt="warning">
+        </div>
+      </div>
+    </li>
+  </ul>
+</section>
