@@ -42,4 +42,18 @@ export class ItemService {
         catchError(this.handleError<Item>('addItem'))
       );
   }
+
+  getItemById(id: string): Observable<Item> {
+    return this.http.get<Item>(`${this.itemUrl}/${id}`)
+      .pipe(
+        catchError(this.handleError<Item>('getItemById'))
+      );
+  }
+
+  updateItem(item: Item): Observable<Item> {
+    return this.http.put<Item>(`${this.itemUrl}/${item.id}`, item, this.httpOptions)
+      .pipe(
+        catchError(this.handleError<Item>('updateItem'))
+      );
+  }
 }

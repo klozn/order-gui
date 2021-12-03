@@ -6,12 +6,14 @@ import {ItemNameFilterPipe} from "./pipe/item-name-filter.pipe";
 import { CreateItemComponent } from './create-item/create-item.component';
 import {RouterModule} from "@angular/router";
 import {UtilityModule} from "../utility/utility.module";
+import { ItemDetailComponent } from './item-detail/item-detail.component';
 
 @NgModule({
   declarations: [
     ItemOverviewComponent,
     ItemNameFilterPipe,
-    CreateItemComponent
+    CreateItemComponent,
+    ItemDetailComponent
   ],
   imports: [
     CommonModule,

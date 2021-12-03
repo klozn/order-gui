@@ -1,0 +1,63 @@
+<div class="container">
+  <section>
+    <div class="section-title">
+      <h3>Item</h3>
+      <span class="id" *ngIf="item">{{item.id}}</span>
+    </div>
+    <form *ngIf="item" (ngSubmit)="update()">
+      <label for="name">Name</label>
+      <div>
+        <input id="name"
+               type="text"
+               name="name"
+               required
+               [ngModel]="item.name"
+               [disabled]="!editing"
+               #name="ngModel" />
+        <div [hidden]="name.valid || name.pristine" class="errorText" *ngIf="editing">Name is required.</div>
+      </div>
+      <label for="description">Description</label>
+      <div>
+      <textarea id="description"
+                name="description"
+                maxlength="225"
+                [ngModel]="item.description"
+                [disabled]="!editing"
+                #description="ngModel"></textarea>
+        <app-char-counter [text]="description.value" [max]="225" *ngIf="editing"></app-char-counter>
+        <div [hidden]="description.valid || description.pristine" class="errorText" *ngIf="editing">Description has 225 characters max.</div>
+      </div>
+      <div>
+        <label for="price">Price</label>
+        <div>
+          <input id="price"
+                 type="number"
+                 name="price"
+                 required
+                 min="0"
+                 [(ngModel)]="item.price"
+                 [disabled]="!editing"
+                 #price="ngModel"/>
+          <div [hidden]="price.valid || price.pristine" class="errorText" *ngIf="editing">Price must be a positive value.</div>
+        </div>
+
+        <label for="stock">Amount of Stock</label>
+        <div>
+          <input id="stock"
+                 type="number"
+                 name="stock"
+                 required
+                 min="1"
+                 [(ngModel)]="item.amountOfStock"
+                 [disabled]="!editing"
+                 #stock="ngModel" />
+          <div [hidden]="stock.valid || stock.pristine" class="errorText" *ngIf="editing">Stock must be higher than 0.</div>
+        </div>
+      </div>
+      <button class="btn" type="button" (click)="edit()" *ngIf="!editing" >EDIT</button>
+      <button class="btn" type="button" routerLink="/items" *ngIf="!editing">BACK</button>
+      <button class="btn btn-create" type="submit" *ngIf="editing">UPDATE</button>
+      <button class="btn" type="button" *ngIf="editing" (click)="cancel()">CANCEL</button>
+    </form>
+  </section>
+</div>
