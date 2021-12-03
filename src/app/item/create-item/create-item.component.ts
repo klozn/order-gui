@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ItemService} from "../item.service";
 import {Router} from "@angular/router";
-import {CreateItem} from "../createItem";
+import {CreateItem} from "../create-item";
 
 @Component({
   selector: 'app-create-item',

@@ -1,0 +1,112 @@
+<section>
+  <div class="section-title">
+    <h3>Create Customer</h3>
+  </div>
+  <form (ngSubmit)="onSubmit()" #customerCreationForm="ngForm">
+    <div class="form-group">
+      <label for="firstname">Firstname</label>
+      <input id="firstname"
+             type="text"
+             class="form-control"
+             required
+             [(ngModel)]="customer.firstname"
+             name="firstname"
+             #firstname="ngModel" />
+      <div [hidden]="firstname.valid || firstname.pristine" class="errorText">Firstname is required.</div>
+    </div>
+    <div class="form-group">
+      <label for="lastname">Lastname</label>
+      <input id="lastname"
+             type="text"
+             class="form-control"
+             required
+             [(ngModel)]="customer.lastname"
+             name="lastname"
+             #lastname="ngModel" />
+      <div [hidden]="lastname.valid || lastname.pristine" class="errorText">Lastname is required.</div>
+    </div>
+    <div class="form-group">
+      <label for="emailLocalPart">Email</label>
+      <input id="emailLocalPart"
+             type="text"
+             class="form-control"
+             required
+             [(ngModel)]="email.localPart"
+             name="localPart"
+             #localPart="ngModel" />@
+      <input id="emailDomain"
+             type="text"
+             class="form-control"
+             required
+             [(ngModel)]="email.domain"
+             name="domain"
+             #domain="ngModel" />
+      <div [hidden]="(localPart.valid || localPart.pristine) &&
+      (domain.valid || domain.pristine)" class="errorText">Email is required.</div>
+    </div>
+    <div class="form-group">
+      <label for="countryCallingCode">Phone number (mobile)</label>
+      +
+      <input id="countryCallingCode"
+             type="text"
+             class="form-control"
+             required
+             minlength="2"
+             maxlength="2"
+             [(ngModel)]="phoneNumber.countryCallingCode"
+             name="countryCallingCode"
+             #countryCallingCode="ngModel" />
+      <input id="number"
+             type="text"
+             class="form-control"
+             required
+             minlength="9"
+             [(ngModel)]="phoneNumber.number"
+             name="number"
+             #number="ngModel" />
+      <div [hidden]="(countryCallingCode.valid || countryCallingCode.pristine) &&
+            (number.valid || number.pristine)" class="errorText">Phone number is required.</div>
+    </div>
+    <div class="form-group">
+      <label for="streetName">Street</label>
+      <input id="streetName"
+             type="text"
+             class="form-control"
+             required
+             [(ngModel)]="address.streetName"
+             name="streetName"
+             #streetName="ngModel" />
+      <div [hidden]="streetName.valid || streetName.pristine" class="errorText">Street name is required.</div>
+      <label for="houseNumber">Number</label>
+      <input id="houseNumber"
+             type="text"
+             class="form-control"
+             required
+             [(ngModel)]="address.houseNumber"
+             name="houseNumber"
+             #houseNumber="ngModel" />
+      <div [hidden]="houseNumber.valid || houseNumber.pristine" class="errorText">House number is required.</div>
+    </div>
+    <div class="form-group">
+      <label for="postalCode">Postal Code</label>
+      <input id="postalCode"
+             type="text"
+             class="form-control"
+             required
+             [(ngModel)]="address.postalCode"
+             name="postalCode"
+             #postalCode="ngModel" />
+      <div [hidden]="postalCode.valid || postalCode.pristine" class="errorText">Postal code is required.</div>
+      <label for="country">Country</label>
+      <select id="country"
+             class="form-control"
+              required
+              [(ngModel)]="address.country"
+             name="country">
+        <option *ngFor="let country of countries" [value]="country">{{country}}</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-create" [disabled]="!customerCreationForm.valid">CREATE</button>
+    <button type="button" class="btn" routerLink="/customers">CANCEL</button>
+  </form>
+</section>

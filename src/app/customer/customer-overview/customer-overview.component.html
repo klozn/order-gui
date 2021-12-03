@@ -13,7 +13,7 @@
       <th>ID</th>
       <th>FIRSTNAME</th>
       <th>LASTNAME</th>
-      <th><button class="btn btn-new" type="button">NEW CUSTOMER</button></th>
+      <th><button class="btn btn-new" type="button" routerLink="/createCustomer">NEW CUSTOMER</button></th>
     </tr>
     <tr *ngFor="let customer of customers | customerLastnameFilter: searchTerm">
       <td>{{customer.id}}</td>
