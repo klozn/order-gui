@@ -1,0 +1,4 @@
+.char-counter {
+  display: flex;
+  justify-content: flex-end;
+}

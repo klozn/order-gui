@@ -23,7 +23,7 @@ export class CreateItemComponent implements OnInit {
   }
 
   onSubmit() {
-    this.itemService.addItem(this.item).subscribe();
-    this.router.navigate(['/items']);
+    this.itemService.addItem(this.item)
+      .subscribe(item => this.router.navigate([`/items/${item.id}`]));
   }
 }

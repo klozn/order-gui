@@ -22,6 +22,7 @@
                 maxlength="255"
                 name="description"
                 #description="ngModel"></textarea>
+      <app-char-counter [text]="description.value" [max]="255"></app-char-counter>
       <div [hidden]="description.valid || description.pristine" class="errorText">Description has 225 characters max.</div>
     </div>
     <div class="form-group">

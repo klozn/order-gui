@@ -5,8 +5,7 @@ import {FormsModule} from "@angular/forms";
 import {ItemNameFilterPipe} from "./pipe/item-name-filter.pipe";
 import { CreateItemComponent } from './create-item/create-item.component';
 import {RouterModule} from "@angular/router";
-
-
+import {UtilityModule} from "../utility/utility.module";
 
 @NgModule({
   declarations: [
@@ -17,7 +16,8 @@ import {RouterModule} from "@angular/router";
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    UtilityModule
   ]
 })
 export class ItemModule { }
