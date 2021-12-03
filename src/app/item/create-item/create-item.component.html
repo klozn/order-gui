@@ -10,14 +10,19 @@
              id="name"
              required
              [(ngModel)]="item.name"
-             name="name"/>
+             name="name"
+             #name="ngModel" />
+      <div [hidden]="name.valid || name.pristine" class="errorText">Name is required.</div>
     </div>
 
     <div class="form-group">
       <label for="description">Description</label>
       <textarea id="description"
                 [(ngModel)]="item.description"
-                name="description"></textarea>
+                maxlength="255"
+                name="description"
+                #description="ngModel"></textarea>
+      <div [hidden]="description.valid || description.pristine" class="errorText">Description has 225 characters max.</div>
     </div>
     <div class="form-group">
       <label for="price">Price</label>
@@ -25,8 +30,11 @@
              class="form-control"
              id="price"
              required
+             min="0"
              [(ngModel)]="item.price"
-             name="price"/>
+             name="price"
+             #price="ngModel"/>
+      <div [hidden]="price.valid || price.pristine" class="errorText">Price must be a positive value.</div>
     </div>
     <div class="form-group">
       <label for="stock">Amount of Stock</label>
@@ -34,10 +42,13 @@
              type="number"
              id="stock"
              required
+             min="1"
              [(ngModel)]="item.amountOfStock"
-             name="stock"/>
+             name="stock"
+             #stock="ngModel" />
+      <div [hidden]="stock.valid || stock.pristine" class="errorText">Stock must be higher than 0.</div>
     </div>
     <button type="submit" class="btn btn-create" [disabled]="!itemCreationForm.form.valid">CREATE</button>
-    <button type="button" class="btn" (click)="goBack()">CANCEL</button>
+    <button type="button" class="btn" routerLink="/items">CANCEL</button>
   </form>
 </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ItemService} from "../item.service";
-import {Location} from "@angular/common";
+import {Router} from "@angular/router";
 import {CreateItem} from "../createItem";
 
 @Component({
@@ -10,19 +10,20 @@ import {CreateItem} from "../createItem";
 })
 export class CreateItemComponent implements OnInit {
 
-  item: CreateItem = new CreateItem();
+  item: CreateItem = {
+    name: '',
+    description: '',
+    price: 0,
+    amountOfStock: 0
+  }
 
-  constructor(private itemService: ItemService, private location: Location) { }
+  constructor(private itemService: ItemService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  goBack() {
-    this.location.back();
-  }
-
   onSubmit() {
     this.itemService.addItem(this.item).subscribe();
-    this.goBack();
+    this.router.navigate(['/items']);
   }
 }

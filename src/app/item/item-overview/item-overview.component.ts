@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ItemService} from "../item.service";
 import {Item} from "../item";
-import {debounceTime, distinctUntilChanged, Observable, Subject, switchMap} from "rxjs";
 
 @Component({
   selector: 'app-item-overview',
