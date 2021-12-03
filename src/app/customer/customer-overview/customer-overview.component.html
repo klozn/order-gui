@@ -1,0 +1,28 @@
+<section>
+  <div class="section-title">
+    <h3>Customers</h3>
+    <div class="item-search">
+      <input id="name"
+             name="name"
+             placeholder="Filter by lastname..."
+             [(ngModel)]="searchTerm"/>
+    </div>
+  </div>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>FIRSTNAME</th>
+      <th>LASTNAME</th>
+      <th><button class="btn btn-new" type="button">NEW CUSTOMER</button></th>
+    </tr>
+    <tr *ngFor="let customer of customers | customerLastnameFilter: searchTerm">
+      <td>{{customer.id}}</td>
+      <td>{{customer.firstname}}</td>
+      <td>{{customer.lastname}}</td>
+      <td>
+        <button class="btn btn-view" type="button">VIEW</button>
+        <button class="btn btn-edit" type="button">EDIT</button>
+      </td>
+    </tr>
+  </table>
+</section>

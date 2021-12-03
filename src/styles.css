@@ -194,6 +194,11 @@ form {
   display: flex;
 }
 
+.item-search {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .card-list {
   display: flex;
   flex-wrap: wrap;

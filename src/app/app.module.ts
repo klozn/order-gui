@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import {LayoutModule} from "./layout/layout.module";
 import {HttpClientModule} from "@angular/common/http";
 import {ItemModule} from "./item/item.module";
+import {CustomerModule} from "./customer/customer.module";
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {ItemModule} from "./item/item.module";
     AppRoutingModule,
     LayoutModule,
     HttpClientModule,
-    ItemModule
+    ItemModule,
+    CustomerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
